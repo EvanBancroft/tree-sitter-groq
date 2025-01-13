@@ -2,4 +2,4 @@
 
 [![Test](https://github.com/EvanBancroft/tree-sitter-groq/actions/workflows/test.yml/badge.svg)](https://github.com/EvanBancroft/tree-sitter-groq/actions/workflows/test.yml)
 
-Groq grammar for [tree-sitter](https://github.com/tree-sitter/tree-sitter).
+[Groq](https://github.com/sanity-io/groq) grammar for [tree-sitter](https://github.com/tree-sitter/tree-sitter).
