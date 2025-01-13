@@ -1,0 +1,99 @@
+==================
+Comments
+==================
+
+
+*[_type == "book" && defined(author)] [0...10] {
+  title,
+  coverImage {
+    asset->{url, mimeType},
+    crop
+  },
+
+  // Expand the author reference 
+  author->,
+
+  // Just need the title for the publisher
+  "publisher": publisher->title,
+}
+
+---
+
+(source_file
+  (expression
+    (expression
+      (expression
+        (expression
+          (everything_expression))
+        (filter
+          (expression
+            (expression
+              (expression
+                (this_attribute
+                  (identifier)))
+              (binary_operator)
+              (expression
+                (string)))
+            (binary_operator)
+            (expression
+              (function_call
+                (identifier)
+                (expression
+                  (this_attribute
+                    (identifier))))))))
+      (slice
+        (range
+          (expression
+            (number))
+          (expression
+            (number)))))
+    (projection
+      (object
+        (object_attribute
+          (expression
+            (this_attribute
+              (identifier))))
+        (object_attribute
+          (expression
+            (expression
+              (this_attribute
+                (identifier)))
+            (projection
+              (object
+                (object_attribute
+                  (expression
+                    (expression
+                      (expression
+                        (this_attribute
+                          (identifier)))
+                      (dereference))
+                    (projection
+                      (object
+                        (object_attribute
+                          (expression
+                            (this_attribute
+                              (identifier))))
+                        (object_attribute
+                          (expression
+                            (this_attribute
+                              (identifier))))))))
+                (object_attribute
+                  (expression
+                    (this_attribute
+                      (identifier))))))))
+        (comment)
+        (object_attribute
+          (expression
+            (expression
+              (this_attribute
+                (identifier)))
+            (dereference)))
+        (comment)
+        (object_attribute
+          (string)
+          (expression
+            (expression
+              (this_attribute
+                (identifier)))
+            (dereference
+              (identifier))))))))

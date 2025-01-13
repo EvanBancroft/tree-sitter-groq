@@ -1,0 +1,155 @@
+==================
+Comparisons & Parent 
+==================
+
+*[_type=='movie']{
+  ...,
+  releaseDate >= '2018-06-01' => {
+    "screenings": *[_type == 'screening' && movie._ref == ^._id],
+    "news": *[_type == 'news' && movie._ref == ^._id],
+  },
+  popularity > 20 && rating > 7.0 => {
+    "featured": true,
+    "awards": *[_type == 'award' && movie._ref == ^._id],
+  },
+}
+
+---
+
+(source_file
+  (expression
+    (expression
+      (expression
+        (everything_expression))
+      (filter
+        (expression
+          (expression
+            (this_attribute
+              (identifier)))
+          (binary_operator)
+          (expression
+            (string)))))
+    (projection
+      (object
+        (object_attribute)
+        (object_attribute
+          (expression
+            (expression
+              (this_attribute
+                (identifier)))
+            (binary_operator)
+            (expression
+              (pair
+                (expression
+                  (string))
+                (expression
+                  (object
+                    (object_attribute
+                      (string)
+                      (expression
+                        (expression
+                          (everything_expression))
+                        (filter
+                          (expression
+                            (expression
+                              (expression
+                                (expression
+                                  (expression
+                                    (expression
+                                      (this_attribute
+                                        (identifier)))
+                                    (binary_operator)
+                                    (expression
+                                      (string)))
+                                  (binary_operator)
+                                  (expression
+                                    (this_attribute
+                                      (identifier))))
+                                (attribute_access
+                                  (identifier)))
+                              (binary_operator)
+                              (expression
+                                (parent_expression)))
+                            (attribute_access
+                              (identifier))))))
+                    (object_attribute
+                      (string)
+                      (expression
+                        (expression
+                          (everything_expression))
+                        (filter
+                          (expression
+                            (expression
+                              (expression
+                                (expression
+                                  (expression
+                                    (expression
+                                      (this_attribute
+                                        (identifier)))
+                                    (binary_operator)
+                                    (expression
+                                      (string)))
+                                  (binary_operator)
+                                  (expression
+                                    (this_attribute
+                                      (identifier))))
+                                (attribute_access
+                                  (identifier)))
+                              (binary_operator)
+                              (expression
+                                (parent_expression)))
+                            (attribute_access
+                              (identifier))))))))))))
+        (object_attribute
+          (expression
+            (expression
+              (expression
+                (expression
+                  (this_attribute
+                    (identifier)))
+                (binary_operator)
+                (expression
+                  (number)))
+              (binary_operator)
+              (expression
+                (this_attribute
+                  (identifier))))
+            (binary_operator)
+            (expression
+              (pair
+                (expression
+                  (number))
+                (expression
+                  (object
+                    (object_attribute
+                      (string)
+                      (expression
+                        (boolean)))
+                    (object_attribute
+                      (string)
+                      (expression
+                        (expression
+                          (everything_expression))
+                        (filter
+                          (expression
+                            (expression
+                              (expression
+                                (expression
+                                  (expression
+                                    (expression
+                                      (this_attribute
+                                        (identifier)))
+                                    (binary_operator)
+                                    (expression
+                                      (string)))
+                                  (binary_operator)
+                                  (expression
+                                    (this_attribute
+                                      (identifier))))
+                                (attribute_access
+                                  (identifier)))
+                              (binary_operator)
+                              (expression
+                                (parent_expression)))
+                            (attribute_access
+                              (identifier))))))))))))))))

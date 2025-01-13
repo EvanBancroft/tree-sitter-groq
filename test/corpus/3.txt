@@ -1,0 +1,26 @@
+==================
+Object
+==================
+
+{
+  "movies": *[_type == "movie"]
+}
+
+---
+
+(source_file
+  (expression
+    (object
+      (object_attribute
+        (string)
+        (expression
+          (expression
+            (everything_expression))
+          (filter
+            (expression
+              (expression
+                (this_attribute
+                  (identifier)))
+              (binary_operator)
+              (expression
+                (string)))))))))

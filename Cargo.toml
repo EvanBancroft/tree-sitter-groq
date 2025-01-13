@@ -1,0 +1,27 @@
+[package]
+name = "tree-sitter-groq"
+description = "A query language and execution engine made at Sanity, Inc, for filtering and projecting JSON documents."
+version = "0.1.0"
+authors = ["Evan Bancroft <contact@evanbancroft.com>"]
+license = "MIT"
+readme = "README.md"
+keywords = ["incremental", "parsing", "tree-sitter", "groq"]
+categories = ["parsing", "text-editors"]
+repository = "https://github.com/evanbancroft/tree-sitter-groq"
+edition = "2021"
+autoexamples = false
+
+build = "bindings/rust/build.rs"
+include = ["bindings/rust/*", "grammar.js", "queries/*", "src/*", "tree-sitter.json"]
+
+[lib]
+path = "bindings/rust/lib.rs"
+
+[dependencies]
+tree-sitter-language = "0.1"
+
+[build-dependencies]
+cc = "1.1.22"
+
+[dev-dependencies]
+tree-sitter = "0.24.6"

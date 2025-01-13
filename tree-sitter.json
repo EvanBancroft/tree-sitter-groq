@@ -1,0 +1,36 @@
+{
+  "grammars": [
+    {
+      "name": "groq",
+      "camelcase": "Groq",
+      "scope": "source.groq",
+      "file-types": [".jsx", ".ts", ".tsx", ".js", ".groq"],
+      "injection-regex": "^groq$",
+      "highlights": ["queries/highlights.scm"]
+    }
+  ],
+  "metadata": {
+    "version": "0.1.0",
+    "license": "MIT",
+    "description": "A query language and execution engine made at Sanity, Inc, for filtering and projecting JSON documents.",
+    "authors": [
+      {
+        "name": "Evan Bancroft",
+        "email": "contact@evanbancroft.com",
+        "url": "https://evanbancroft.com/"
+      }
+    ],
+    "links": {
+      "repository": "https://github.com/EvanBancroft/tree-sitter-groq"
+    }
+  },
+  "bindings": {
+    "c": true,
+    "go": true,
+    "node": true,
+    "python": true,
+    "rust": true,
+    "swift": true
+  }
+}
+

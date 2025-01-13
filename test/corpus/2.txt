@@ -1,0 +1,20 @@
+==================
+Filter
+==================
+
+*[_type == "movie"]
+
+---
+
+(source_file
+  (expression
+    (expression
+      (everything_expression))
+    (filter
+      (expression
+        (expression
+          (this_attribute
+            (identifier)))
+        (binary_operator)
+        (expression
+          (string))))))

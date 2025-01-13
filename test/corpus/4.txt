@@ -1,0 +1,27 @@
+==================
+Slice Traversal
+==================
+
+*[_type == "movie"][0...10]
+
+---
+
+(source_file
+  (expression
+    (expression
+      (expression
+        (everything_expression))
+      (filter
+        (expression
+          (expression
+            (this_attribute
+              (identifier)))
+          (binary_operator)
+          (expression
+            (string)))))
+    (slice
+      (range
+        (expression
+          (number))
+        (expression
+          (number))))))

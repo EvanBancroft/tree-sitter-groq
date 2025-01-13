@@ -1,0 +1,61 @@
+==================
+Expression, Slice Traversal, Everything Return
+==================
+
+*[_type == $type && title in ['a', "b", 'c']] | order(_createdAt desc) [0...10] {
+  ...,
+}
+
+---
+
+(source_file
+  (expression
+    (expression
+      (expression
+        (pipe_function_call
+          (expression
+            (expression
+              (everything_expression))
+            (filter
+              (expression
+                (expression
+                  (expression
+                    (expression
+                      (this_attribute
+                        (identifier)))
+                    (binary_operator)
+                    (expression
+                      (variable
+                        (identifier))))
+                  (binary_operator)
+                  (expression
+                    (this_attribute
+                      (identifier))))
+                (binary_operator)
+                (expression
+                  (array
+                    (array_element
+                      (expression
+                        (string)))
+                    (array_element
+                      (expression
+                        (string)))
+                    (array_element
+                      (expression
+                        (string))))))))
+          (function_call
+            (identifier)
+            (expression
+              (desc
+                (expression
+                  (this_attribute
+                    (identifier))))))))
+      (slice
+        (range
+          (expression
+            (number))
+          (expression
+            (number)))))
+    (projection
+      (object
+        (object_attribute)))))

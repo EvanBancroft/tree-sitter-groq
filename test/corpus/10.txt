@@ -1,0 +1,36 @@
+==================
+Handle JSX String Interpolation
+==================
+
+*[_type == "movie"][0...10] {
+  ${HELLO}
+}
+
+---
+
+(source_file
+  (expression
+    (expression
+      (expression
+        (expression
+          (everything_expression))
+        (filter
+          (expression
+            (expression
+              (this_attribute
+                (identifier)))
+            (binary_operator)
+            (expression
+              (string)))))
+      (slice
+        (range
+          (expression
+            (number))
+          (expression
+            (number)))))
+    (projection
+      (object
+        (object_attribute
+          (expression
+            (js_insert
+              (identifier))))))))
