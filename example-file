@@ -1,7 +1,0 @@
-"slug": "/" + reference->.slug.current,
-_key,
-title,
-(reference->.store.status == "active") => {
-  "slug": "/products/" + reference->.store.slug.current, 
-},
-
