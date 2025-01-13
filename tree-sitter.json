@@ -2,11 +2,11 @@
   "grammars": [
     {
       "name": "groq",
-      "camelcase": "Groq",
+      "camelcase": "GROQ",
       "scope": "source.groq",
-      "file-types": [".jsx", ".ts", ".tsx", ".js", ".groq"],
-      "injection-regex": "^groq$",
-      "highlights": ["queries/highlights.scm"]
+      "path": ".",
+      "file-types": ["groq"],
+      "highlights": "queries/highlights.scm"
     }
   ],
   "metadata": {
@@ -33,4 +33,3 @@
     "swift": true
   }
 }
-
