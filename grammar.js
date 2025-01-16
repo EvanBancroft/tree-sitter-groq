@@ -41,7 +41,8 @@ module.exports = grammar({
 
     // Basic literals
     null: ($) => "null",
-    boolean: ($) => choice("true", "false"),
+    true: ($) => "true",
+    false: ($) => "false",
     identifier: ($) => /[A-Za-z_][A-Za-z0-9_]*/,
 
     // Arrays
@@ -153,7 +154,8 @@ module.exports = grammar({
     expression: ($) =>
       choice(
         $.null,
-        $.boolean,
+        $.true,
+        $.false,
         $.number,
         $.string,
         $.array,
