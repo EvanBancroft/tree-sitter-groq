@@ -1,5 +1,5 @@
 ==================
-Comparisons & Parent 
+Comparisons & Parent
 ==================
 
 *[_type=='movie']{
@@ -124,7 +124,7 @@ Comparisons & Parent
                     (object_attribute
                       (string)
                       (expression
-                        (boolean)))
+                        (true)))
                     (object_attribute
                       (string)
                       (expression

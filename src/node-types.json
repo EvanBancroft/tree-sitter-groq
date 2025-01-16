@@ -69,11 +69,6 @@
     "fields": {}
   },
   {
-    "type": "boolean",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "dereference",
     "named": true,
     "fields": {},
@@ -157,10 +152,6 @@
           "named": true
         },
         {
-          "type": "boolean",
-          "named": true
-        },
-        {
           "type": "dereference",
           "named": true
         },
@@ -178,6 +169,10 @@
         },
         {
           "type": "expression",
+          "named": true
+        },
+        {
+          "type": "false",
           "named": true
         },
         {
@@ -234,6 +229,10 @@
         },
         {
           "type": "this_expression",
+          "named": true
+        },
+        {
+          "type": "true",
           "named": true
         },
         {
@@ -618,7 +617,7 @@
   },
   {
     "type": "false",
-    "named": false
+    "named": true
   },
   {
     "type": "identifier",
@@ -646,7 +645,7 @@
   },
   {
     "type": "true",
-    "named": false
+    "named": true
   },
   {
     "type": "{",

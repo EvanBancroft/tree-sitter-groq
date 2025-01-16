@@ -169,18 +169,13 @@
       "type": "STRING",
       "value": "null"
     },
-    "boolean": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "true"
-        },
-        {
-          "type": "STRING",
-          "value": "false"
-        }
-      ]
+    "true": {
+      "type": "STRING",
+      "value": "true"
+    },
+    "false": {
+      "type": "STRING",
+      "value": "false"
     },
     "identifier": {
       "type": "PATTERN",
@@ -846,7 +841,11 @@
         },
         {
           "type": "SYMBOL",
-          "name": "boolean"
+          "name": "true"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "false"
         },
         {
           "type": "SYMBOL",

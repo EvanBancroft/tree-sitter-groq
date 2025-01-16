@@ -183,5 +183,4 @@ module.exports = grammar({
         $.pair,
       ),
   },
-  conflicts: ($) => [],
 });

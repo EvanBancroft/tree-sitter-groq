@@ -188,7 +188,7 @@ All Kinds of Destructuring Functions
                     (expression
                       (unary_operator)
                       (expression
-                        (boolean))))
+                        (false))))
                   (binary_operator)
                   (expression
                     (this_attribute
@@ -293,7 +293,7 @@ All Kinds of Destructuring Functions
                         (object_attribute
                           (string)
                           (expression
-                            (boolean)))
+                            (true)))
                         (object_attribute
                           (string)
                           (expression
