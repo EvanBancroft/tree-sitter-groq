@@ -6,7 +6,7 @@ Slice Traversal
 
 ---
 
-(source_file
+(document
   (expression
     (expression
       (expression

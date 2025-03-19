@@ -6,7 +6,6 @@ Everything Expression
 
 ---
 
-(source_file
+(document
   (expression
-    (everything_expression)
-))
+    (everything_expression)))

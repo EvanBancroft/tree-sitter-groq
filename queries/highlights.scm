@@ -1,3 +1,5 @@
+; inherits: json
+
 ; Operators
 (binary_operator) @operator
 

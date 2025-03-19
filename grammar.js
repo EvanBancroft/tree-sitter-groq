@@ -4,16 +4,21 @@
  * @license MIT
  */
 
+const json = require("tree-sitter-json/grammar");
+
 /// <reference types="tree-sitter-cli/dsl" />
-// @ts-check
-module.exports = grammar({
+module.exports = grammar(json, {
   name: "groq",
 
-  extras: ($) => [$.comment, /[\s\uFEFF\u2060\u200B\u00A0]/],
+  extras: ($, original) => [
+    ...original,
+    $.comment,
+    /[\s\uFEFF\u2060\u200B\u00A0]/,
+  ],
 
   rules: {
     // The entry point of any GROQ query is an expression
-    source_file: ($) => $.expression,
+    document: ($, original) => choice($.expression, original),
 
     // Comments
     comment: (_) =>
@@ -21,16 +26,10 @@ module.exports = grammar({
         choice(seq("//", /.*/), seq("/*", /[^*]*\*+([^/*][^*]*\*+)*/, "/")),
       ),
 
-    // Numbers
-    _integer: ($) => /[0-9]+/,
-    _decimal: ($) => /[0-9]+\.[0-9]+/,
-    _scientific: ($) => /[0-9]+(?:\.[0-9]+)?[eE][+-]?[0-9]+/,
-
-    number: ($) =>
-      choice(prec(1, $._integer), prec(1, $._decimal), prec(1, $._scientific)),
+    number: (_, original) => original,
 
     // Strings
-    string: ($) =>
+    string: ($, original) =>
       choice(
         seq('"', repeat(choice(/[^"\\]+/, $.escape_sequence)), '"'),
         seq("'", repeat(choice(/[^'\\]+/, $.escape_sequence)), "'"),
@@ -46,46 +45,54 @@ module.exports = grammar({
     identifier: ($) => /[A-Za-z_][A-Za-z0-9_]*/,
 
     // Arrays
-    array: ($) =>
-      seq(
-        "[",
-        optional(
-          seq(
-            $.array_element,
-            repeat(seq(",", $.array_element)),
-            optional(","),
+    array: ($, original) =>
+      choice(
+        original,
+        seq(
+          "[",
+          optional(
+            seq(
+              $.array_element,
+              repeat(seq(",", $.array_element)),
+              optional(","),
+            ),
           ),
+          "]",
         ),
-        "]",
       ),
 
     array_element: ($) => prec.left(seq(optional("..."), $.expression)),
 
     // Objects
-    object: ($) =>
-      seq(
-        "{",
-        optional(
-          choice(
-            seq(
-              $.object_attribute,
-              repeat(seq(",", $.object_attribute)),
-              optional(","),
+    object: ($, original) =>
+      choice(
+        original,
+        seq(
+          "{",
+          optional(
+            choice(
+              seq(
+                $.object_attribute,
+                repeat(seq(",", $.object_attribute)),
+                optional(","),
+              ),
             ),
           ),
+          "}",
         ),
-        "}",
       ),
 
     object_attribute: ($) =>
       choice(
         seq($.string, ":", $.expression),
         $.expression,
+        seq($.this_attribute, $.js_insert),
         seq("...", optional($.expression)),
       ),
 
     // Pairs
-    pair: ($) => prec.left(1, seq($.expression, "=>", $.expression)),
+    groq_pair: ($) => prec.left(1, seq($.expression, "=>", $.expression)),
+    pair: (_, original) => original,
 
     // Ranges
     range: ($) =>
@@ -152,35 +159,39 @@ module.exports = grammar({
 
     // Main expression rule combining everything
     expression: ($) =>
-      choice(
-        $.null,
-        $.true,
-        $.false,
-        $.number,
-        $.string,
-        $.array,
-        $.object,
-        $.this_expression,
-        $.function_call,
-        $.this_attribute,
-        $.everything_expression,
-        $.parent_expression,
-        $.variable,
-        $.js_insert,
-        prec.left(seq("(", $.expression, ")")),
-        prec.left(seq($.expression, $.attribute_access)),
-        prec.left(seq($.expression, $.element_access)),
-        prec.left(seq($.expression, $.slice)),
-        prec.left(seq($.expression, $.filter)),
-        prec.left(seq($.expression, $.array_postfix)),
-        prec.left(seq($.expression, $.projection)),
-        prec.left(seq($.expression, $.dereference)),
-        prec.left(seq($.unary_operator, $.expression)),
-        prec.left(seq($.expression, $.binary_operator, $.expression)),
-        $.pipe_function_call,
-        $.asc,
-        $.desc,
-        $.pair,
+      prec(
+        2,
+        choice(
+          $.null,
+          $.true,
+          $.false,
+          $.number,
+          $.string,
+          $.array,
+          $.object,
+          $.this_expression,
+          $.function_call,
+          $.this_attribute,
+          $.everything_expression,
+          $.parent_expression,
+          $.variable,
+          $.js_insert,
+          prec.left(seq("(", $.expression, ")")),
+          prec.left(seq($.expression, $.attribute_access)),
+          prec.left(seq($.expression, $.element_access)),
+          prec.left(seq($.expression, $.slice)),
+          prec.left(seq($.expression, $.filter)),
+          prec.left(seq($.expression, $.array_postfix)),
+          prec.left(seq($.expression, $.projection)),
+          prec.left(seq($.expression, $.dereference)),
+          prec.left(seq($.unary_operator, $.expression)),
+          prec.left(seq($.expression, $.binary_operator, $.expression)),
+          $.pipe_function_call,
+          $.asc,
+          $.desc,
+          $.groq_pair,
+          $.pair,
+        ),
       ),
   },
 });

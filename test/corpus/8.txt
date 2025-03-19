@@ -28,7 +28,7 @@ All Kinds of Destructuring Functions
 
 ---
 
-(source_file
+(document
   (expression
     (expression
       (expression
@@ -131,7 +131,7 @@ All Kinds of Destructuring Functions
                     (identifier)))
                 (binary_operator)
                 (expression
-                  (pair
+                  (groq_pair
                     (expression
                       (variable
                         (identifier)))
@@ -195,7 +195,7 @@ All Kinds of Destructuring Functions
                       (identifier))))
                 (binary_operator)
                 (expression
-                  (pair
+                  (groq_pair
                     (expression
                       (number))
                     (expression

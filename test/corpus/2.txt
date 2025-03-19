@@ -6,7 +6,7 @@ Filter
 
 ---
 
-(source_file
+(document
   (expression
     (expression
       (everything_expression))
