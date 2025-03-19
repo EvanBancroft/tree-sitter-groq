@@ -1,9 +1,10 @@
 ==================
-Handle JSX String Interpolation
+Handle JSX String Interpolation After Expression
 ==================
 
 *[_type == "movie"][0...10] {
-   ${IMAGE}
+  title,
+  poster ${IMAGE}
 }
 
 ---
@@ -32,5 +33,10 @@ Handle JSX String Interpolation
       (object
         (object_attribute
           (expression
-            (js_insert
-              (identifier))))))))
+            (this_attribute
+              (identifier))))
+        (object_attribute
+          (this_attribute
+            (identifier))
+          (js_insert
+            (identifier)))))))

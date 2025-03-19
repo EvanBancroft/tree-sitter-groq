@@ -1,5 +1,5 @@
 ==================
-Comparisons & Parent 
+Comparisons & Parent
 ==================
 
 *[_type=='movie']{
@@ -16,7 +16,7 @@ Comparisons & Parent
 
 ---
 
-(source_file
+(document
   (expression
     (expression
       (expression
@@ -39,7 +39,7 @@ Comparisons & Parent
                 (identifier)))
             (binary_operator)
             (expression
-              (pair
+              (groq_pair
                 (expression
                   (string))
                 (expression
@@ -116,7 +116,7 @@ Comparisons & Parent
                   (identifier))))
             (binary_operator)
             (expression
-              (pair
+              (groq_pair
                 (expression
                   (number))
                 (expression
@@ -124,7 +124,7 @@ Comparisons & Parent
                     (object_attribute
                       (string)
                       (expression
-                        (boolean)))
+                        (true)))
                     (object_attribute
                       (string)
                       (expression
